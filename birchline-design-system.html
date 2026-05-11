@@ -499,6 +499,106 @@
     margin: 4px 0;
   }
   .dropdown-item.danger { color: #B04A4A; }
+
+  /* Status Selector */
+  .status-selector {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .status-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .status-trigger .cb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: var(--border);
+    border-radius: 5px;
+    background: var(--white);
+    margin: 0;
+    cursor: pointer;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 12px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .status-badge.todo       { background: rgba(199,142,63,0.16);  color: #A06A2A; }
+  .status-badge.in-progress { background: rgba(217,119,87,0.16); color: var(--clay); }
+  .status-badge.done        { background: rgba(120,140,93,0.18); color: #5E7344; }
+  .status-badge.backlog     { background: var(--gray-100);        color: var(--gray-700); }
+  .status-badge.cancelled   { background: rgba(176,74,74,0.14);  color: #B04A4A; }
+
+  .status-dropdown {
+    width: 260px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    box-shadow: 0 4px 10px rgba(20,20,19,0.08);
+    padding: 4px 0;
+  }
+  .status-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.1s ease;
+  }
+  .status-option:hover,
+  .status-option.selected {
+    background: var(--gray-100);
+  }
+  .status-option .status-check {
+    width: 18px;
+    flex-shrink: 0;
+    font-size: 15px;
+    color: var(--slate);
+  }
+  .status-option .status-check.empty {
+    visibility: hidden;
+  }
+  .status-option .status-badge {
+    flex: 1;
+  }
+  .status-option .shortcut {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gray-500);
+    flex-shrink: 0;
+  }
+  .status-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: background 0.1s ease;
+  }
+  .status-footer:hover {
+    background: var(--gray-100);
+    color: var(--slate);
+  }
+  .status-footer .icon {
+    font-size: 14px;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
@@ -824,6 +924,63 @@
             <div class="dropdown-item danger">Delete</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-name">&lt;StatusSelector /&gt; — Task status with dropdown</div>
+      <div class="component-stage" style="align-items: flex-start; gap: 40px;">
+
+        <!-- Trigger -->
+        <div class="status-selector">
+          <div class="status-trigger">
+            <input type="checkbox" class="cb">
+            <span class="status-badge in-progress">In Progress</span>
+          </div>
+
+          <!-- Dropdown -->
+          <div class="status-dropdown">
+            <div class="status-option">
+              <span class="status-check empty">&#10003;</span>
+              <span class="status-badge todo">Todo</span>
+              <span class="shortcut">1</span>
+            </div>
+            <div class="status-option selected">
+              <span class="status-check">&#10003;</span>
+              <span class="status-badge in-progress">In Progress</span>
+              <span class="shortcut">2</span>
+            </div>
+            <div class="status-option">
+              <span class="status-check empty">&#10003;</span>
+              <span class="status-badge done">Done</span>
+              <span class="shortcut">3</span>
+            </div>
+            <div class="status-option">
+              <span class="status-check empty">&#10003;</span>
+              <span class="status-badge backlog">Backlog</span>
+              <span class="shortcut">4</span>
+            </div>
+            <div class="status-option">
+              <span class="status-check empty">&#10003;</span>
+              <span class="status-badge cancelled">Cancelled</span>
+              <span class="shortcut">5</span>
+            </div>
+            <hr class="dropdown-divider">
+            <div class="status-footer">
+              <span class="icon">&#9998;</span> Edit Statuses
+            </div>
+          </div>
+        </div>
+
+        <!-- All badge variants (standalone reference) -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="status-badge todo">Todo</span>
+          <span class="status-badge in-progress">In Progress</span>
+          <span class="status-badge done">Done</span>
+          <span class="status-badge backlog">Backlog</span>
+          <span class="status-badge cancelled">Cancelled</span>
+        </div>
+
       </div>
     </div>
 
