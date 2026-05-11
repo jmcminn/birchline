@@ -507,6 +507,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    position: relative;
+  }
+  .status-dropdown.closed {
+    display: none;
   }
   .status-trigger {
     display: inline-flex;
@@ -935,13 +939,13 @@
 
         <!-- Trigger -->
         <div class="status-selector">
-          <div class="status-trigger">
-            <input type="checkbox" class="cb">
+          <div class="status-trigger" onclick="this.parentElement.querySelector('.status-dropdown').classList.toggle('closed')">
+            <input type="checkbox" class="cb" onclick="event.stopPropagation()">
             <span class="status-badge in-progress">In Progress</span>
           </div>
 
           <!-- Dropdown -->
-          <div class="status-dropdown">
+          <div class="status-dropdown closed" id="status-menu">
             <div class="status-option">
               <span class="status-check empty"><i class="ti ti-check"></i></span>
               <span class="status-badge todo">Todo</span>
@@ -1012,5 +1016,14 @@
   </section>
 
 </div>
+<script>
+document.addEventListener('click', function(e) {
+  document.querySelectorAll('.status-dropdown:not(.closed)').forEach(function(menu) {
+    if (!menu.closest('.status-selector').contains(e.target)) {
+      menu.classList.add('closed');
+    }
+  });
+});
+</script>
 </body>
 </html>
