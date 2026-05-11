@@ -605,6 +605,19 @@
     text-align: center;
     flex-shrink: 0;
   }
+
+  /* Labeled component item */
+  .labeled-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .labeled-item .item-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray-500);
+  }
 </style>
 </head>
 <body>
@@ -849,10 +862,22 @@
     <div class="component">
       <div class="component-name">&lt;Button /&gt;</div>
       <div class="component-stage">
-        <button class="btn btn-primary">Create task</button>
-        <button class="btn btn-secondary">Cancel</button>
-        <button class="btn btn-ghost">Skip</button>
-        <button class="btn btn-danger">Delete</button>
+        <div class="labeled-item">
+          <button class="btn btn-primary">Create task</button>
+          <span class="item-label">Primary</span>
+        </div>
+        <div class="labeled-item">
+          <button class="btn btn-secondary">Cancel</button>
+          <span class="item-label">Secondary</span>
+        </div>
+        <div class="labeled-item">
+          <button class="btn btn-ghost">Skip</button>
+          <span class="item-label">Ghost</span>
+        </div>
+        <div class="labeled-item">
+          <button class="btn btn-danger">Delete</button>
+          <span class="item-label">Danger</span>
+        </div>
       </div>
     </div>
 
