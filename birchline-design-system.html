@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Birchline — Design System Reference</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
   :root {
     --ivory: #FAF9F5;
@@ -886,9 +887,9 @@
       <div class="component-name">&lt;MultiSelect /&gt; — Pill-based multi-select</div>
       <div class="component-stage" style="flex-direction: column; align-items: flex-start; gap: 20px;">
         <div class="multi-select">
-          <span class="pill">Design <span class="remove">&times;</span></span>
-          <span class="pill">Engineering <span class="remove">&times;</span></span>
-          <span class="pill">QA <span class="remove">&times;</span></span>
+          <span class="pill">Design <span class="remove"><i class="ti ti-x"></i></span></span>
+          <span class="pill">Engineering <span class="remove"><i class="ti ti-x"></i></span></span>
+          <span class="pill">QA <span class="remove"><i class="ti ti-x"></i></span></span>
           <input class="ghost-input" placeholder="Add team&hellip;">
         </div>
         <div class="multi-select">
@@ -903,16 +904,16 @@
         <div class="dropdown-preview">
           <div class="dropdown-menu">
             <div class="dropdown-item active">
-              <span class="check">&#10003;</span> In review
+              <span class="check"><i class="ti ti-check"></i></span> In review
             </div>
             <div class="dropdown-item">
-              <span class="check empty">&#10003;</span> Draft
+              <span class="check empty"><i class="ti ti-check"></i></span> Draft
             </div>
             <div class="dropdown-item">
-              <span class="check empty">&#10003;</span> Done
+              <span class="check empty"><i class="ti ti-check"></i></span> Done
             </div>
             <div class="dropdown-item">
-              <span class="check empty">&#10003;</span> Archived
+              <span class="check empty"><i class="ti ti-check"></i></span> Archived
             </div>
           </div>
         </div>
@@ -942,33 +943,33 @@
           <!-- Dropdown -->
           <div class="status-dropdown">
             <div class="status-option">
-              <span class="status-check empty">&#10003;</span>
+              <span class="status-check empty"><i class="ti ti-check"></i></span>
               <span class="status-badge todo">Todo</span>
               <span class="shortcut">1</span>
             </div>
             <div class="status-option selected">
-              <span class="status-check">&#10003;</span>
+              <span class="status-check"><i class="ti ti-check"></i></span>
               <span class="status-badge in-progress">In Progress</span>
               <span class="shortcut">2</span>
             </div>
             <div class="status-option">
-              <span class="status-check empty">&#10003;</span>
+              <span class="status-check empty"><i class="ti ti-check"></i></span>
               <span class="status-badge done">Done</span>
               <span class="shortcut">3</span>
             </div>
             <div class="status-option">
-              <span class="status-check empty">&#10003;</span>
+              <span class="status-check empty"><i class="ti ti-check"></i></span>
               <span class="status-badge backlog">Backlog</span>
               <span class="shortcut">4</span>
             </div>
             <div class="status-option">
-              <span class="status-check empty">&#10003;</span>
+              <span class="status-check empty"><i class="ti ti-check"></i></span>
               <span class="status-badge cancelled">Cancelled</span>
               <span class="shortcut">5</span>
             </div>
             <hr class="dropdown-divider">
             <div class="status-footer">
-              <span class="icon">&#9998;</span> Edit Statuses
+              <span class="icon"><i class="ti ti-pencil"></i></span> Edit Statuses
             </div>
           </div>
         </div>
