@@ -352,6 +352,153 @@
   .badge-accent  { background: rgba(217, 119, 87, 0.14); color: var(--clay); }
   .badge-success { background: rgba(120, 140, 93, 0.16); color: var(--olive); }
   .badge-warning { background: rgba(199, 142, 63, 0.16); color: #A06A2A; }
+
+  /* Select (single) */
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+  }
+  .select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 38px;
+    padding: 0 36px 0 12px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--slate);
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  }
+  .select:focus {
+    border-color: var(--clay);
+    box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.15);
+  }
+  .select-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid var(--gray-500);
+    border-bottom: 1.5px solid var(--gray-500);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+  }
+  .select.placeholder { color: var(--gray-500); }
+
+  /* Multi-select (pill-based) */
+  .multi-select {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 5px 10px;
+    width: 340px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    cursor: text;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  }
+  .multi-select.focused {
+    border-color: var(--clay);
+    box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.15);
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 24px;
+    padding: 0 8px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 450;
+    color: var(--slate);
+    background: var(--gray-100);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pill .remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--gray-500);
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background 0.1s ease, color 0.1s ease;
+  }
+  .pill .remove:hover {
+    background: var(--gray-300);
+    color: var(--slate);
+  }
+  .multi-select .ghost-input {
+    border: none;
+    outline: none;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--slate);
+    background: transparent;
+    padding: 0;
+    min-width: 80px;
+    flex: 1;
+  }
+  .multi-select .ghost-input::placeholder { color: var(--gray-500); }
+
+  /* Dropdown menu (static preview) */
+  .dropdown-preview {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-menu {
+    width: 220px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    box-shadow: 0 4px 10px rgba(20,20,19,0.08);
+    padding: 4px 0;
+    overflow: hidden;
+  }
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--slate);
+    cursor: pointer;
+    transition: background 0.1s ease;
+  }
+  .dropdown-item:hover,
+  .dropdown-item.active {
+    background: var(--gray-100);
+  }
+  .dropdown-item .check {
+    width: 16px;
+    font-size: 14px;
+    color: var(--clay);
+    flex-shrink: 0;
+  }
+  .dropdown-item .check.empty { visibility: hidden; }
+  .dropdown-divider {
+    height: 0;
+    border: none;
+    border-top: 1px solid var(--gray-100);
+    margin: 4px 0;
+  }
+  .dropdown-item.danger { color: #B04A4A; }
 </style>
 </head>
 <body>
@@ -608,6 +755,75 @@
       <div class="component-stage">
         <input class="input" type="text" placeholder="Search tasks&hellip;">
         <input class="input" type="text" value="Weekly planning">
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-name">&lt;Select /&gt; — Single-select</div>
+      <div class="component-stage">
+        <div class="select-wrapper">
+          <select class="select placeholder">
+            <option value="" disabled selected>Choose a status&hellip;</option>
+            <option>Draft</option>
+            <option>In review</option>
+            <option>Done</option>
+            <option>Archived</option>
+          </select>
+        </div>
+        <div class="select-wrapper">
+          <select class="select">
+            <option>Draft</option>
+            <option selected>In review</option>
+            <option>Done</option>
+            <option>Archived</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-name">&lt;MultiSelect /&gt; — Pill-based multi-select</div>
+      <div class="component-stage" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+        <div class="multi-select">
+          <span class="pill">Design <span class="remove">&times;</span></span>
+          <span class="pill">Engineering <span class="remove">&times;</span></span>
+          <span class="pill">QA <span class="remove">&times;</span></span>
+          <input class="ghost-input" placeholder="Add team&hellip;">
+        </div>
+        <div class="multi-select">
+          <input class="ghost-input" placeholder="Select assignees&hellip;">
+        </div>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-name">&lt;DropdownMenu /&gt; — Action menu</div>
+      <div class="component-stage" style="align-items: flex-start; gap: 32px;">
+        <div class="dropdown-preview">
+          <div class="dropdown-menu">
+            <div class="dropdown-item active">
+              <span class="check">&#10003;</span> In review
+            </div>
+            <div class="dropdown-item">
+              <span class="check empty">&#10003;</span> Draft
+            </div>
+            <div class="dropdown-item">
+              <span class="check empty">&#10003;</span> Done
+            </div>
+            <div class="dropdown-item">
+              <span class="check empty">&#10003;</span> Archived
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-preview">
+          <div class="dropdown-menu">
+            <div class="dropdown-item">Edit task</div>
+            <div class="dropdown-item">Duplicate</div>
+            <div class="dropdown-item">Move to&hellip;</div>
+            <hr class="dropdown-divider">
+            <div class="dropdown-item danger">Delete</div>
+          </div>
+        </div>
       </div>
     </div>
 
